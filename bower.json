@@ -1,0 +1,38 @@
+{
+  "name": "codecraft",
+  "description": "",
+  "main": "index.js",
+  "authors": [
+    "Aladdin <alaaden3000@gmail.com>"
+  ],
+  "license": "ISC",
+  "moduleType": [
+    "node"
+  ],
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^3.3.6",
+    "angular": "^1.5.0",
+    "ladda": "^0.9.8",
+    "angular-ladda": "^0.3.4",
+    "jquery": "^2.2.1",
+    "angular-ui-router": "ui-route#^0.2.18",
+    "angular-animate": "^1.5.0",
+    "angular-resource": "^1.5.0",
+    "ngInfiniteScroll": "^1.2.2",
+    "angular-spinner": "^0.8.1",
+    "angular-auto-validate": "^1.19.3",
+    "angular-strap": "^2.3.7",
+    "bootstrap-additions": "^0.3.1",
+    "angular-toastr": "^1.7.0",
+    "font-awesome": "^4.5.0"
+  }
+}

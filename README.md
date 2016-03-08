@@ -1,1 +1,1 @@
-# Contacts with AngularJS
+# Contacts application with AngularJS

@@ -1,0 +1,43 @@
+<div class="col-md-12">
+  <div class="row" infinite-scroll="loadMore()" infinite-scroll-immediate-check="false" infinite-scroll-distance="1">
+    <card ng-repeat="person in contacts.persons" user="person" delete-user="parentDeleteUser"></card>
+  </div>
+  <!-- <table class="table table-bordered" infinite-scroll="loadMore()" infinite-scroll-distance="1">
+    <tr>
+      <th class="col-1 text-center">#</th>
+      <th class="col-2">
+        <div class="sortables">
+          <span ng-click="order = 'name'" class="fa fa-sort-asc"></span>
+          <span ng-click="order = '-name'" class="fa fa-sort-desc"></span>
+        </div>
+        Name
+      </th>
+      <th class="col-3">
+        <div class="sortables">
+          <span ng-click="order = 'email'" class="fa fa-sort-asc"></span>
+          <span ng-click="order = '-email'" class="fa fa-sort-desc"></span>
+        </div>
+        Email
+      </th>
+      <th class="col-4">Phone</th>
+    </tr>
+    <tr ng-repeat="person in filteredPersons = (contacts.persons | filter:sensitiveSearch | orderBy:order)" ng-style="{'background-color':person.email == contacts.selectedPerson.email ? 'lightgray' : ''}" ng-click="contacts.selectedPerson = person">
+    <tr ng-repeat="person in contacts.persons" ui-sref="edit({email:person.email})" ng-style="{'background-color':person.email == contacts.selectedPerson.email ? 'lightgray' : ''}">
+      <td class="text-center">
+        <img ng-src="{{person.photo | defaultImage:'lib/img/avatar.png'}}" class="img-circle profile-photo" alt="">
+      </td>
+      <td>{{ person.name }}</td>
+      <td>{{ person.email }}</td>
+      <td>{{ person.phonenumber }}</td>
+    </tr>
+  </table> -->
+  <!-- <tr ng-show="filteredPersons.length == 0"> -->
+  <div ng-show="contacts.persons.length == 0 && !contacts.isLoading">
+    <div class="alert alert-info">
+      <p class="text-center">
+        No results found for search term '{{ search }}'
+      </p>
+    </div>
+  </div>
+  <spinner is-loading="contacts.isLoading" message="Loading..."></spinner>
+</div>

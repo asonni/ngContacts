@@ -24,7 +24,7 @@
     "ladda": "^0.9.8",
     "angular-ladda": "^0.3.4",
     "jquery": "^2.2.1",
-    "angular-ui-router": "ui-route#^0.2.18",
+    "angular-ui-router": "^0.2.18",
     "angular-animate": "^1.5.0",
     "angular-resource": "^1.5.0",
     "ngInfiniteScroll": "^1.2.2",
@@ -33,6 +33,7 @@
     "angular-strap": "^2.3.7",
     "bootstrap-additions": "^0.3.1",
     "angular-toastr": "^1.7.0",
-    "font-awesome": "^4.5.0"
+    "font-awesome": "^4.5.0",
+    "angular-motion": "^0.4.3"
   }
 }

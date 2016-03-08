@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="bower_components/angular-toastr/dist/angular-toastr.min.css">
     <link rel="stylesheet" href="bower_components/ladda/dist/ladda-themeless.min.css">
     <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="bower_components/angular-motion/dist/angular-motion.min.css">
     <link rel="stylesheet" href="lib/css/paper.min.css">
     <link rel="stylesheet" href="lib/css/style.css">
   </head>
@@ -18,108 +19,23 @@
             Contacts
           </a>
         </div>
+        <div ui-view="search"></div>
+        <div class="collapse navbar-collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li ui-sref-active="active">
+              <a ui-sref="list">Search</a>
+            </li>
+            <li ui-sref-active="active" ng-controller="PersonsCreateController">
+              <a ui-sref="create" ng-click="clearPerson()">Create</a>
+            </li>
+          </ul>
+        </div>
       </div>
     </nav>
     <div class="container main-content">
       <toaster-container></toaster-container>
       <div class="row">
-        <div class="col-md-8" ng-controller="PersonsListController">
-          <div class="row">
-            <div class="col-md-12">
-              <form class="form-inline well well-sm">
-                <span class="fa fa-search"></span>
-                <div class="form-group">
-                  <input type="text" class="form-control" id="name" ng-model="search" placeholder="Search name...">
-                </div>
-                <span class="fa fa-sort"></span>
-                <div class="form-group">
-                  <select class="form-control" ng-model="order">
-                    <option value="name">Name (ASC)</option>
-                    <option value="-name">Name (DEC)</option>
-                    <option value="email">Email (ASC)</option>
-                    <option value="-email">Email (DEC)</option>
-                  </select>
-                </div>
-                <button class="btn btn-primary pull-right" ng-click="showCreateModel()">
-                  Create
-                </button>
-              </form>
-              <table class="table table-bordered" infinite-scroll="loadMore()" infinite-scroll-distance="1">
-                <tr>
-                  <th class="col-1 text-center">#</th>
-                  <th class="col-2">
-                    <div class="sortables">
-                      <span ng-click="order = 'name'" class="fa fa-sort-asc"></span>
-                      <span ng-click="order = '-name'" class="fa fa-sort-desc"></span>
-                    </div>
-                    Name
-                  </th>
-                  <th class="col-3">
-                    <div class="sortables">
-                      <span ng-click="order = 'email'" class="fa fa-sort-asc"></span>
-                      <span ng-click="order = '-email'" class="fa fa-sort-desc"></span>
-                    </div>
-                    Email
-                  </th>
-                  <th class="col-4">Phone</th>
-                </tr>
-                <!-- <tr ng-repeat="person in filteredPersons = (contacts.persons | filter:sensitiveSearch | orderBy:order)" ng-style="{'background-color':person.email == contacts.selectedPerson.email ? 'lightgray' : ''}" ng-click="contacts.selectedPerson = person"> -->
-                <tr ng-repeat="person in contacts.persons" ng-style="{'background-color':person.email == contacts.selectedPerson.email ? 'lightgray' : ''}" ng-click="contacts.selectedPerson = person">
-                  <td class="text-center">
-                    <img ng-src="{{person.photo | defaultImage:'lib/img/avatar.png'}}" class="img-circle profile-photo" alt="">
-                  </td>
-                  <td>{{ person.name }}</td>
-                  <td>{{ person.email }}</td>
-                  <td>{{ person.phonenumber }}</td>
-                </tr>
-              </table>
-              <!-- <tr ng-show="filteredPersons.length == 0"> -->
-              <div ng-show="contacts.persons.length == 0 && !contacts.isLoading">
-                <div class="alert alert-info">
-                  <p class="text-center">
-                    No results found for search term '{{ search }}'
-                  </p>
-                </div>
-              </div>
-              <div class="spinner" ng-show="contacts.isLoading">
-                <span us-spinner="{radius:8, width:5, length: 3, lines: 9}"></span>
-                <p>Loading...</p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4" ng-controller="PersonsDetailController">
-          <div class="panel panel-default">
-            <div class="panel-heading">
-              Details
-              <button class="btn btn-danger btn-sm pull-right" ladda="contacts.isDeleting" ng-click="remove()">
-                Delete
-              </button>
-              <div class="clearfix"></div>
-            </div>
-            <div class="panel-body">
-              <!-- <dl>
-                <dt>Name</dt>
-                <dd>{{contacts.selectedPerson.name}}</dd>
-                <dt>Email</dt>
-                <dd>{{contacts.selectedPerson.email}}</dd>
-                <dt>Birthday</dt>
-                <dd>{{contacts.selectedPerson.birthdate | date:"longDate"}}</dd>
-                <dt>Phone number</dt>
-                <dd>{{contacts.selectedPerson.phonenumber}}</dd>
-                <dt>Address</dt>
-                <dd>{{contacts.selectedPerson.address}}</dd>
-                <dt>City</dt>
-                <dd>{{contacts.selectedPerson.city}}</dd>
-                <dt>Country</dt>
-                <dd>{{contacts.selectedPerson.country}}</dd>
-              </dl> -->
-              <form class="form-horizontal" ng-submit="save()" novalidate>
-                <ng-include src="'templates/form.html'"></ng-include>
-              </form>
-            </div>
-          </div>
-        </div>
+        <div ui-view="main"></div>
       </div>
     </div>
     <script src="bower_components/angular/angular.min.js"></script>
@@ -135,6 +51,7 @@
     <script src="bower_components/angular-strap/dist/angular-strap.tpl.min.js"></script>
     <script src="bower_components/angular-toastr/dist/angular-toastr.min.js"></script>
     <script src="bower_components/angular-toastr/dist/angular-toastr.tpls.min.js"></script>
+    <script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
     <script src="lib/js/app.js"></script>
   </body>
 </html>
